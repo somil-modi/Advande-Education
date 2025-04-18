@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - SignLearn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .quiz-section {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-card {
+            background-color: var(--background-color);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .quiz-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .question-container {
+            display: none;
+        }
+
+        .question {
+            margin-bottom: 2rem;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .option {
+            background-color: var(--background-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .option:hover {
+            background-color: var(--card-background);
+        }
+
+        .option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .quiz-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+
+        .quiz-btn:hover {
+            background-color: #3a5bef;
+        }
+
+        .quiz-btn:disabled {
+            background-color: var(--secondary-color);
+            cursor: not-allowed;
+        }
+
+        .result-section {
+            display: none;
+            text-align: center;
+        }
+
+        .score {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-hands-helping"></i>
+            <span>SignLearn</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="learning.html">Learn</a>
+            <a href="practice.html">Practice</a>
+            <a href="quiz.html" class="active">Quiz</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="quiz-container">
+        <h1>Test Your Knowledge</h1>
+        <p class="subtitle">Choose a quiz type to begin</p>
+
+        <div class="quiz-options">
+            <div class="quiz-card" onclick="startQuiz('basic')">
+                <i class="fas fa-award"></i>
+                <h2>Basic Quiz</h2>
+                <p>Test your knowledge of basic signs</p>
+            </div>
+            <div class="quiz-card" onclick="startQuiz('advanced')">
+                <i class="fas fa-star"></i>
+                <h2>Advanced Quiz</h2>
+                <p>Challenge yourself with phrases and sentences</p>
+            </div>
+        </div>
+
+        <div id="question-section" style="display: none;">
+            <div class="question-container">
+                <h2 id="question-text"></h2>
+                <img id="sign-image" src="" alt="Sign Language Sign">
+                <div id="options-container" class="options-container"></div>
+                <button id="next-btn" class="btn" onclick="checkAnswer()">Next</button>
+            </div>
+        </div>
+
+        <div id="result-section" style="display: none;">
+            <div class="result-container">
+                <h2>Quiz Complete!</h2>
+                <p>Your Score: <span id="score-display"></span></p>
+                <p id="result-feedback"></p>
+                <button class="btn" onclick="restartQuiz()">Try Again</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About SignLearn</h4>
+                <p>Making sign language learning accessible to everyone.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="learning.html">Learn</a>
+                <a href="practice.html">Practice</a>
+                <a href="quiz.html">Quiz</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-envelope"></i> somil.modi.gupta@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9917060828</p>
+                <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SignLearn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="quiz.js"></script>
+</body>
+</html> 

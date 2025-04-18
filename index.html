@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignLearn - Learn Sign Language</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-hands-helping"></i>
+            <span>SignLearn</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="learning.html">Learn</a>
+            <a href="practice.html">Practice</a>
+            <a href="quiz.html">Quiz</a>
+        </div>
+        <div class="nav-actions">
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="welcome-section">
+            <h1>Welcome to SignLearn</h1>
+            <p class="subtitle">Learn sign language in a fun and interactive way</p>
+        </section>
+
+        <section class="language-selection">
+            <h2>Choose Your Language</h2>
+            <div class="language-cards">
+                <div class="language-card" onclick="startLanguage('english')">
+                    <i class="fas fa-language card-icon"></i>
+                    <h3>English</h3>
+                    <p>Learn English sign language</p>
+                    <button class="start-btn">Start Learning</button>
+                </div>
+                <div class="language-card" onclick="startLanguage('hindi')">
+                    <i class="fas fa-language card-icon"></i>
+                    <h3>Hindi</h3>
+                    <p>Learn Hindi sign language</p>
+                    <button class="start-btn">Start Learning</button>
+                </div>
+                <div class="language-card" onclick="startLanguage('bengali')">
+                    <i class="fas fa-language card-icon"></i>
+                    <h3>Bengali</h3>
+                    <p>Learn Bengali sign language</p>
+                    <button class="start-btn">Start Learning</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>Why Choose SignLearn?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Interactive Learning</h3>
+                    <p>Engage with interactive lessons and practice exercises</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Learn on any device, anywhere, anytime</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Progress Tracking</h3>
+                    <p>Track your learning progress and achievements</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="developer-section">
+            <h2>Meet the Developer</h2>
+            <div class="developer-profile">
+                <img src="images/profiles/user1.jpg" alt="Developer Profile" class="developer-image">
+                <div class="developer-info">
+                    <h3>Somil Modi Gupta</h3>
+                    <p>Full Stack Developer</p>
+                    <div class="developer-social">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Start Learning?</h2>
+            <p>Join thousands of learners who are mastering sign language with SignLearn</p>
+            <button class="cta-btn" onclick="startLanguage('english')">Get Started</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About SignLearn</h4>
+                <p>Making sign language learning accessible to everyone.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="learning.html">Learn</a>
+                <a href="practice.html">Practice</a>
+                <a href="quiz.html">Quiz</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-envelope"></i> somil.modi.gupta@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +91 9917060828</p>
+                <p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SignLearn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
